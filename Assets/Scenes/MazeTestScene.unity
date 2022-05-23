@@ -465,7 +465,7 @@ Transform:
   m_GameObject: {fileID: 1376576019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.1, y: 0.478, z: 0.0054629594}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -645,7 +645,7 @@ MonoBehaviour:
   Player: {fileID: 1376576020}
   Goal: {fileID: 1584242835}
   Walls: {fileID: 1633073052}
-  WallTemplate: {fileID: 4882822253147208723, guid: 0467b2f50cd944549adcc04886203f95, type: 3}
+  WallTemplate: {fileID: 4882822253147208723, guid: 01d3580dbb82d894093c3c42afa941ff, type: 3}
   FloorTemplate: {fileID: 2711916130657649292, guid: f94f0ab25c26c634b905b6b44597ee50, type: 3}
   MovementSmoothing: 0
   Width: 20
