@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7144053475488075389}
   - component: {fileID: -2322650280097454933}
   m_Layer: 0
-  m_Name: Poll
+  m_Name: Pole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
