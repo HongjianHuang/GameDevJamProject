@@ -13,7 +13,8 @@ public class MazeGenerator : MonoBehaviour
     public Transform Player;
     public Transform Goal;
     public Transform Walls;
-    public GameObject WallTemplate;
+    public GameObject HWallTemplate;
+    public GameObject VWallTemplate;
     public GameObject FloorTemplate;
     public float MovementSmoothing;
 
@@ -75,15 +76,14 @@ public class MazeGenerator : MonoBehaviour
         for (int x = 0; x < Width + 1; x++)
             for (int y = 0; y < Height; y++)
                 if (HWalls[x, y])
-                    Instantiate(WallTemplate, new Vector3(x, y + 0.5f, 0), Quaternion.Euler(0, 0, 90), Walls);
+                    Instantiate(VWallTemplate, new Vector3(x, y + 0.5f, 0), Quaternion.identity, Walls);
         for (int x = 0; x < Width; x++)
             for (int y = 0; y < Height + 1; y++)
                 if (VWalls[x, y])
-                    Instantiate(WallTemplate, new Vector3(x + 0.5f, y, 0), Quaternion.identity, Walls);
+                    Instantiate(HWallTemplate, new Vector3(x + 0.5f, y, 0), Quaternion.identity, Walls);
         for (int x = 0; x < Width; x++)
             for (int y = 0; y < Height; y++)
                 Instantiate(FloorTemplate, new Vector3(x + 0.5f, y + 0.5f), Quaternion.identity, Walls);
-
         Player.transform.position = new Vector3(PlayerX + 0.5f, PlayerY + 0.5f);
         Goal.transform.position = new Vector3(GoalX + 0.5f, GoalY + 0.25f);
 
