@@ -75,12 +75,16 @@ public class MazeGenerator : MonoBehaviour
 
         for (int x = 0; x < Width + 1; x++)
             for (int y = 0; y < Height; y++)
-                if (HWalls[x, y])
+                if (HWalls[x, y]){
                     Instantiate(VWallTemplate, new Vector3(x, y + 0.5f, 0), Quaternion.identity, Walls);
+            
+                }
         for (int x = 0; x < Width; x++)
             for (int y = 0; y < Height + 1; y++)
-                if (VWalls[x, y])
+                if (VWalls[x, y]){
                     Instantiate(HWallTemplate, new Vector3(x + 0.5f, y, 0), Quaternion.identity, Walls);
+                   
+                }
         for (int x = 0; x < Width; x++)
             for (int y = 0; y < Height; y++)
                 Instantiate(FloorTemplate, new Vector3(x + 0.5f, y + 0.5f), Quaternion.identity, Walls);
