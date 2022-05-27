@@ -16,10 +16,13 @@ public class MazeGenerator : MonoBehaviour
     public GameObject HWallTemplate;
     public GameObject VWallTemplate;
     public GameObject FloorTemplate;
+    public GameObject PoleTemplate;
     public float MovementSmoothing;
+    
 
-    public int Width = 20;
-    public int Height = 20;
+    public int Width = 10;
+    public int Height = 10;
+    public int poleCount = 3;
     public bool[,] HWalls, VWalls;
     public float HoleProbability;
     public int GoalX, GoalY;
@@ -35,10 +38,6 @@ public class MazeGenerator : MonoBehaviour
     {
         if (Vector3.Distance(Player.transform.position, new Vector3(GoalX + 0.5f, GoalY + 0.5f)) < 0.12f)
         {
-            if (Rand(25) < 15)
-                Width++;
-            else
-                Height++;
 
             StartNext();
         }
@@ -63,24 +62,54 @@ public class MazeGenerator : MonoBehaviour
         (HWalls, VWalls) = GenerateLevel(Width, Height);
         PlayerX = Rand(Width);
         PlayerY = Rand(Height);
-
+        List<List<int>> polePosition= new List<List<int>>();
+        int poleNumber = poleCount;
+        int[] integers = new int[] {-2,2};
+        int randYIndex;
+        int randXIndex;
+        int randY;
+        int randX;
+        for(int i = 0; i < poleCount; i++){
+            int poleX = UnityEngine.Random.Range(4, Width-4);
+            int poleY = UnityEngine.Random.Range(4, Height-4);
+            foreach(List<int> item in polePosition){
+                if(Math.Abs(item[0] - poleX) < 3 && Math.Abs(item[1] - poleY) < 3 
+                ){
+                    randYIndex = UnityEngine.Random.Range(0, integers.Length - 1);
+                    randXIndex = UnityEngine.Random.Range(0, integers.Length - 1);
+                    randY = integers[randYIndex];
+                    randX = integers[randXIndex];
+                    poleX += randX;
+                    poleY += randY;
+                }
+            }
+            if(poleX == GoalX && poleY == GoalY){
+                poleX += 1;
+                poleY += 1;
+            }
+            List<int> polexy = new List<int>();
+            polexy.Add(poleX);
+            polexy.Add(poleY);
+            polePosition.Add(polexy);
+            
+        }
         int minDiff = Mathf.Max(Width, Height) / 2;
         while (true)
         {
-            GoalX = Rand(Width);
-            GoalY = Rand(Height);
+            GoalX = Rand(Width-1);
+            GoalY = Rand(Height-1);
             if (Mathf.Abs(GoalX - PlayerX) >= minDiff) break;
             if (Mathf.Abs(GoalY - PlayerY) >= minDiff) break;
         }
 
-        for (int x = 0; x < Width + 1; x++)
+        for (int x = 0; x < Width+1; x++)
             for (int y = 0; y < Height; y++)
                 if (HWalls[x, y]){
                     Instantiate(VWallTemplate, new Vector3(x, y + 0.5f, 0), Quaternion.identity, Walls);
             
                 }
         for (int x = 0; x < Width; x++)
-            for (int y = 0; y < Height + 1; y++)
+            for (int y = 0; y < Height+1; y++)
                 if (VWalls[x, y]){
                     Instantiate(HWallTemplate, new Vector3(x + 0.5f, y, 0), Quaternion.identity, Walls);
                    
@@ -88,6 +117,8 @@ public class MazeGenerator : MonoBehaviour
         for (int x = 0; x < Width; x++)
             for (int y = 0; y < Height; y++)
                 Instantiate(FloorTemplate, new Vector3(x + 0.5f, y + 0.5f), Quaternion.identity, Walls);
+        for(int i = 0; i < polePosition.Count; i++)
+            Instantiate(PoleTemplate, new Vector3(polePosition[i][0] + 0.5f, polePosition[i][1] + 0.5f), Quaternion.identity, Walls);
         Player.transform.position = new Vector3(PlayerX + 0.5f, PlayerY + 0.5f);
         Goal.transform.position = new Vector3(GoalX + 0.5f, GoalY + 0.25f);
 
