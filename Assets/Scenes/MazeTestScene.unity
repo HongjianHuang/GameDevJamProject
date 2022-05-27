@@ -573,6 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phone: {fileID: 387038543}
+  power: {fileID: 1736138300}
   isOut: 0
 --- !u!1 &387038543
 GameObject:
@@ -1536,7 +1537,7 @@ GameObject:
   - component: {fileID: 1376576025}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1842,6 +1843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1736138298}
   - component: {fileID: 1736138299}
+  - component: {fileID: 1736138300}
   m_Layer: 0
   m_Name: Light 2D
   m_TagString: Untagged
@@ -1942,6 +1944,24 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &1736138300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736138297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4df297ea059c34bae08f8f232566e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerPercentage: 100
+  drainSpeedWhenUsing: 10
+  drainSpeedWhenNotUsing: 3
+  isUsing: 0
+  chargeSpeed: 50
+  lightSource: {fileID: 1736138299}
 --- !u!4 &1815774895 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3730016428471748177, guid: d5f58391b830322409ead9834652a4ca, type: 3}
