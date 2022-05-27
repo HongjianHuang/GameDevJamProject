@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Power : MonoBehaviour
 {
@@ -25,13 +26,21 @@ public class Power : MonoBehaviour
         }
     }
     public bool isUsing;
-    public bool isOn;
+    public bool IsOn {
+        get {
+            return lightSource.enabled;
+        }
+        set {
+            lightSource.enabled = value;
+        }
+    }
     public float chargeSpeed;
     private bool isCharging;
+    public Light2D lightSource;
 
     public void PowerOff() {
         PowerPercentage = 0f;
-        isOn = false;
+        IsOn = false;
     }
     
     public IEnumerator Charge() {
@@ -54,7 +63,7 @@ public class Power : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isOn) {
+        if (IsOn) {
             int beforePowerPercentageFloor = Mathf.FloorToInt(PowerPercentage);
             PowerPercentage -= Time.deltaTime * DrainSpeed;
             int afterPowerPercentageFloor = Mathf.FloorToInt(PowerPercentage);
