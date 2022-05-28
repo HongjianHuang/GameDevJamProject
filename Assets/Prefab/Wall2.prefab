@@ -111,8 +111,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.7893668, y: 0.0691011}
+  m_EdgeRadius: 0.1
 --- !u!114 &3307040692637400474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   - {x: -0.29395175, y: -0.20454419, z: 0.000000044703484}
   m_ShapePathHash: -973769441
   m_Mesh: {fileID: 0}
-  m_InstanceId: 25574
+  m_InstanceId: 36704
 --- !u!1001 &5321594311170964615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3307040692637400474, guid: 020e4b85c424d13439083af6b53d0d9e, type: 3}
       propertyPath: m_InstanceId
-      value: -4032
+      value: -81892
       objectReference: {fileID: 0}
     - target: {fileID: 4882822253147208723, guid: 020e4b85c424d13439083af6b53d0d9e, type: 3}
       propertyPath: m_Name
@@ -214,7 +214,8 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 75fad7bb785475744b7b77ad13f34dfa, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2161690786423752033, guid: 020e4b85c424d13439083af6b53d0d9e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 020e4b85c424d13439083af6b53d0d9e, type: 3}
 --- !u!4 &1052174928069418431 stripped
 Transform:
