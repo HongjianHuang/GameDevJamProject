@@ -1204,7 +1204,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7775861, y: 1}
+    m_SensorSize: {x: 1.7770898, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1609,8 +1609,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: -23.8}
-  m_SizeDelta: {x: 82.7352, y: 108.4034}
+  m_AnchoredPosition: {x: -5.1894, y: -23.6765}
+  m_SizeDelta: {x: 81.901, y: 110.7357}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1258200989
 MonoBehaviour:
@@ -1870,8 +1870,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!58 &1376576026
-CircleCollider2D:
+--- !u!70 &1376576026
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1883,9 +1883,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.55
+  m_Offset: {x: -0.011775494, y: -0.039246082}
+  m_Size: {x: 0.46359062, y: 0.9503031}
+  m_Direction: 0
 --- !u!1 &1513873529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2387,8 +2387,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2.9320984, y: 0.000022888184}
-  m_SizeDelta: {x: 9.1357, y: 0}
+  m_AnchoredPosition: {x: -1.8934021, y: -0.0000076293945}
+  m_SizeDelta: {x: 6.6086, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2049512536
 MonoBehaviour:
@@ -2410,7 +2410,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
