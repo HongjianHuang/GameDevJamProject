@@ -10,6 +10,7 @@ public class MazeGenerator : MonoBehaviour
 {
     // Start is called before the first frame update
     public CinemachineVirtualCamera vcam;
+    public GameObject PlayerObject;
     public Transform Player;
     public Transform Goal;
     public Transform Walls;
@@ -56,9 +57,10 @@ public class MazeGenerator : MonoBehaviour
 
     public void StartNext()
     {
+        
         foreach (Transform child in Walls)
             Destroy(child.gameObject);
-
+        PlayerObject.GetComponentInChildren<Power>().PowerPercentage = 100f;
         (HWalls, VWalls) = GenerateLevel(Width, Height);
         PlayerX = Rand(Width);
         PlayerY = Rand(Height);
@@ -121,7 +123,6 @@ public class MazeGenerator : MonoBehaviour
             Instantiate(PoleTemplate, new Vector3(polePosition[i][0] + 0.5f, polePosition[i][1] + 0.5f), Quaternion.identity, Walls);
         Player.transform.position = new Vector3(PlayerX + 0.5f, PlayerY + 0.5f);
         Goal.transform.position = new Vector3(GoalX + 0.5f, GoalY + 0.25f);
-
         //vcam.m_Lens.OrthographicSize = Mathf.Pow(Mathf.Max(Width / 1.5f, Height), 0.70f) * 0.95f;
     }
 

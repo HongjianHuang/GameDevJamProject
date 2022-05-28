@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pole : MonoBehaviour
-{   
-    public Collider2D rangeCollider;
+public class NextLevel : MonoBehaviour
+{
     // Start is called before the first frame update
+    public MazeGenerator mazeGenerator;
     void Start()
     {
         
@@ -16,10 +16,9 @@ public class Pole : MonoBehaviour
     {
         
     }
-
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
-            StartCoroutine(other.GetComponentInChildren<Power>().Charge());
+            mazeGenerator.StartNext();
         }
     }
 }
