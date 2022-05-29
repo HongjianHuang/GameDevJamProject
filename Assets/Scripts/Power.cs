@@ -12,7 +12,7 @@ public class Power : MonoBehaviour
             return powerPercentage;
         }
         set {
-            powerPercentage = Mathf.Clamp(value, 0f, 100f);
+            powerPercentage = value;
         }
     }
     public float drainSpeedWhenUsing;
@@ -35,14 +35,12 @@ public class Power : MonoBehaviour
         }
     }
     public float chargeSpeed;
-    private bool isCharging;
+    public bool isCharging;
     public Light2D lightSource;
-
     public void PowerOff() {
         PowerPercentage = 0f;
         IsOn = false;
     }
-    
     public IEnumerator Charge() {
         if (isCharging) {
             yield return null;
@@ -71,7 +69,10 @@ public class Power : MonoBehaviour
                 float powerOffProbability = 1f - 0.1f * afterPowerPercentageFloor;
                 float rand = Random.Range(0f, 1f);
                 if (rand <= powerOffProbability) {
-                    PowerOff();
+                    if(!isCharging){
+                        PowerOff();
+                    }
+                    
                 }
             }
         }

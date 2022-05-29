@@ -20,23 +20,39 @@ public class PhoneMovement : MonoBehaviour
             power.isUsing = value;
         }
     }
-
     private void Start() {
         IsOut =false;
-        phone.transform.LeanMoveLocal(new Vector2(-300, -545), 0f).setEaseOutExpo();
+        phone.transform.LeanMoveLocal(new Vector2(-475, -845), 0f).setEaseOutExpo();
         LeanTween.alpha(blackScreen.GetComponent<RectTransform>(), 1f , 0f );
         
     }
+    public void PhoneOut(){
+        phone.transform.LeanMoveLocal(new Vector2(-475, -27), 0.7f).setEaseOutExpo();
+        if(power.IsOn){
+            LeanTween.alpha(blackScreen.GetComponent<RectTransform>(), 0f , 0.3f ).setEaseOutQuad();
+        }
+        
+        IsOut = true;
+    }
+    public void PhoneIn(){
+        phone.transform.LeanMoveLocal(new Vector2(-475, -845), 0.7f).setEaseOutQuad();
+        LeanTween.alpha(blackScreen.GetComponent<RectTransform>(), 1f , 0.3f ).setEaseOutQuad();
+        IsOut = false;
+    }
     public void ChangePhoneState(){
         if(IsOut==false){
-            phone.transform.LeanMoveLocal(new Vector2(-300, -27), 0.7f).setEaseOutExpo();
-            LeanTween.alpha(blackScreen.GetComponent<RectTransform>(), 0f , 0.3f ).setEaseOutQuad();;
-            IsOut = true;
+            PhoneOut();
         }
         else{
-            phone.transform.LeanMoveLocal(new Vector2(-300, -545), 0.7f).setEaseOutQuad();
+            PhoneIn();
+        }
+    }
+    private void Update() {
+        if(!power.IsOn){
             LeanTween.alpha(blackScreen.GetComponent<RectTransform>(), 1f , 0.3f ).setEaseOutQuad();
-            IsOut = false;
+        }
+        if(power.IsOn && IsOut){
+            LeanTween.alpha(blackScreen.GetComponent<RectTransform>(), 0f , 0.3f ).setEaseOutQuad();
         }
     }
     

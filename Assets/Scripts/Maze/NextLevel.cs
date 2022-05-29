@@ -5,7 +5,7 @@ using UnityEngine;
 public class NextLevel : MonoBehaviour
 {
     // Start is called before the first frame update
-    public MazeGenerator mazeGenerator;
+    public GameManager gm;
     void Start()
     {
         
@@ -18,7 +18,7 @@ public class NextLevel : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
-            mazeGenerator.StartNext();
+            gm.GameWon();
         }
     }
 }

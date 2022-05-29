@@ -18,6 +18,8 @@ public class MazeGenerator : MonoBehaviour
     public GameObject VWallTemplate;
     public GameObject FloorTemplate;
     public GameObject PoleTemplate;
+    public PhoneMovement phoneMovement;
+    public Power power;
     public float MovementSmoothing;
     
 
@@ -32,16 +34,10 @@ public class MazeGenerator : MonoBehaviour
 
     void Start()
     {
-        StartNext();
     }
 
     void Update()
     {
-        if (Vector3.Distance(Player.transform.position, new Vector3(GoalX + 0.5f, GoalY + 0.5f)) < 0.12f)
-        {
-
-            StartNext();
-        }
         if (Input.GetKeyDown(KeyCode.G))
             StartNext();
     }
@@ -57,7 +53,13 @@ public class MazeGenerator : MonoBehaviour
 
     public void StartNext()
     {
-        
+        power.IsOn = true;
+        phoneMovement.PhoneIn();
+        if (GameObject.Find("Ghost(Clone)") != null)
+        {
+            Destroy(GameObject.Find("Ghost(Clone)"));
+            Debug.Log("destroy");
+        }
         foreach (Transform child in Walls)
             Destroy(child.gameObject);
         PlayerObject.GetComponentInChildren<Power>().PowerPercentage = 100f;
