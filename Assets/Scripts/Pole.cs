@@ -20,6 +20,14 @@ public class Pole : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
             StartCoroutine(other.GetComponentInChildren<Power>().Charge());
+            other.GetComponentInChildren<Power>().IsOn = true;
+            //Debug.Log(other.GetComponentInChildren<Power>().IsOn);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.tag == "Player") {
+            other.GetComponentInChildren<Power>().isCharging = false;
+            
         }
     }
 }
