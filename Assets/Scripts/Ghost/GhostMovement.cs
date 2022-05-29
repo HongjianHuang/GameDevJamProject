@@ -14,6 +14,8 @@ public class GhostMovement : MonoBehaviour
     public Transform player;
     public Power power;
     public bool isDying = true;
+    public bool isChasing = true;
+    public float dyingSpeed = 0.5f; 
     void Start()
     {
         startPosition = transform.position;
@@ -30,6 +32,10 @@ public class GhostMovement : MonoBehaviour
     void Update()
     {
         if(!power.IsOn){
+            if(isChasing){  
+                isChasing = false;
+                LeanTween.alpha(gameObject, 1f , 18f );
+            }
             elapsedTime += Time.deltaTime;
             float percentageComplete = elapsedTime/desiredDuration;
             transform.position = Vector3.Lerp(startPosition, player.position, percentageComplete);
@@ -37,11 +43,16 @@ public class GhostMovement : MonoBehaviour
         else{
             if(isDying){
                 backStartPosition  = transform.position;
+                LeanTween.alpha(gameObject, 0f , 2f );
                 isDying = false; 
+            }
+            if(gameObject.GetComponent<SpriteRenderer>().color.a <= 0){
+                Destroy(gameObject);
             }
             backElapsedTime += Time.deltaTime;
             float backPercentageComplet = backElapsedTime/desiredDuration;
             transform.position = Vector3.Lerp(backStartPosition, startPosition , backPercentageComplet);
+
         }
         
 

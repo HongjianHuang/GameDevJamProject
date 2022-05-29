@@ -2379,7 +2379,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7788571, y: 1}
+    m_SensorSize: {x: 1.778036, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5338,7 +5338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: {fileID: 1736138300}
   player: {fileID: 1376576019}
-  distance: 2.5
+  distance: 1.8
   ghostPrefab: {fileID: 2853782940303599656, guid: 15bc6e4e3c2438d4a97ceaa232daa12b, type: 3}
   randomPointOnCircle: {x: 0, y: 0}
   nullVector: 0
