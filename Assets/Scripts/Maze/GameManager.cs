@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject losePanel;
     public GameObject winPanel;
     public GameObject creditPanel;
+    public GameObject manualPanel;
     public Power power;
     public float batteryLife;
     public TMP_Text batteryLifeText;
@@ -30,6 +31,12 @@ public class GameManager : MonoBehaviour
     }
     public void HideCredit(){
         creditPanel.SetActive(false);
+    }
+    public void ShowManual(){
+        manualPanel.SetActive(true);
+    }
+    public void HideManual(){
+        manualPanel.SetActive(false);
     }
     public void NextLevel(){
         Time.timeScale = 1;
