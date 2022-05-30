@@ -15,7 +15,8 @@ public class GhostMovement : MonoBehaviour
     public Power power;
     public bool isDying = true;
     public bool isChasing = true;
-    public float dyingSpeed = 0.5f; 
+    public float dyingSpeed = 0.5f;
+    public AudioSource audioSource;
     void Start()
     {
         startPosition = transform.position;
@@ -39,6 +40,7 @@ public class GhostMovement : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float percentageComplete = elapsedTime/desiredDuration;
             transform.position = Vector3.Lerp(startPosition, player.position, percentageComplete);
+            audioSource.volume = Mathf.Clamp01(1f / (transform.position - player.position).magnitude);
         }
         else{
             if(isDying){

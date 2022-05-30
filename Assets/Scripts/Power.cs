@@ -41,16 +41,8 @@ public class Power : MonoBehaviour
         PowerPercentage = 0f;
         IsOn = false;
     }
-    public IEnumerator Charge() {
-        if (isCharging) {
-            yield return null;
-        } else {
-            isCharging = true;
-            while (PowerPercentage < 100f) {
-                PowerPercentage += chargeSpeed * Time.deltaTime;
-                yield return null;
-            }
-        }
+    public void Charge() {
+        isCharging = true;
     }
     // Start is called before the first frame update
     void Start()
@@ -61,7 +53,9 @@ public class Power : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsOn) {
+        if (isCharging) {
+            if (PowerPercentage < 100f) PowerPercentage += chargeSpeed * Time.deltaTime;
+        } else if (IsOn) {
             int beforePowerPercentageFloor = Mathf.FloorToInt(PowerPercentage);
             PowerPercentage -= Time.deltaTime * DrainSpeed;
             int afterPowerPercentageFloor = Mathf.FloorToInt(PowerPercentage);
@@ -76,5 +70,6 @@ public class Power : MonoBehaviour
                 }
             }
         }
+        
     }
 }
