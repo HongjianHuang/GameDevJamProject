@@ -143,8 +143,8 @@ MonoBehaviour:
   power: {fileID: 0}
   isDying: 1
   isChasing: 1
-  dyingSpeed: 0.5
   audioSource: {fileID: 7555919815595160017}
+  isPlaying: 1
 --- !u!82 &7555919815595160017
 AudioSource:
   m_ObjectHideFlags: 0

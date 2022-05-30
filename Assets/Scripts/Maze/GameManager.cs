@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject winPanel;
     public GameObject creditPanel;
     public GameObject manualPanel;
+    public GameObject manualInfo;
     public Power power;
     public float batteryLife;
     public TMP_Text batteryLifeText;
@@ -34,9 +35,11 @@ public class GameManager : MonoBehaviour
     }
     public void ShowManual(){
         manualPanel.SetActive(true);
+        manualInfo.SetActive(true);
     }
     public void HideManual(){
         manualPanel.SetActive(false);
+        manualInfo.SetActive(false);
     }
     public void NextLevel(){
         Time.timeScale = 1;
@@ -55,7 +58,7 @@ public class GameManager : MonoBehaviour
     public void GameWon(){
         Time.timeScale = 0;
         winPanel.SetActive(true);
-        power.drainSpeedWhenNotUsing += 0.5f;
+        power.drainSpeedWhenNotUsing += 0.33f;
         batteryLife = 100.0f/power.drainSpeedWhenNotUsing;
         batteryLifeText.text = "Battery Life: " + (Mathf.RoundToInt(batteryLife*10)/10.0f).ToString()+"s";
     }

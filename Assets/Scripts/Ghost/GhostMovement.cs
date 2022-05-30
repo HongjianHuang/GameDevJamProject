@@ -10,13 +10,13 @@ public class GhostMovement : MonoBehaviour
     private Vector3 backStartPosition;
     public float desiredDuration = 20f;
     private float elapsedTime;
-    private float backElapsedTime;
+    private float backElapsedTime = 3.0f;
     public Transform player;
     public Power power;
     public bool isDying = true;
     public bool isChasing = true;
-    public float dyingSpeed = 0.5f;
     public AudioSource audioSource;
+    public bool isPlaying = true;
     void Start()
     {
         startPosition = transform.position;
@@ -32,10 +32,18 @@ public class GhostMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Time.timeScale == 0 && isPlaying){
+            audioSource.Pause();
+            isPlaying = false;
+        }
+        if(Time.timeScale != 0 && !isPlaying){
+            audioSource.Play();
+            isPlaying = true;
+        }
         if(!power.IsOn){
             if(isChasing){  
                 isChasing = false;
-                LeanTween.alpha(gameObject, 1f , 18f );
+                LeanTween.alpha(gameObject, 1f , 18.0f );
             }
             elapsedTime += Time.deltaTime;
             float percentageComplete = elapsedTime/desiredDuration;
@@ -45,7 +53,8 @@ public class GhostMovement : MonoBehaviour
         else{
             if(isDying){
                 backStartPosition  = transform.position;
-                LeanTween.alpha(gameObject, 0f , 2f );
+                LeanTween.cancel(gameObject);
+                LeanTween.alpha(gameObject, 0f , 2.0f );
                 isDying = false; 
             }
             if(gameObject.GetComponent<SpriteRenderer>().color.a <= 0){
@@ -54,6 +63,7 @@ public class GhostMovement : MonoBehaviour
             backElapsedTime += Time.deltaTime;
             float backPercentageComplet = backElapsedTime/desiredDuration;
             transform.position = Vector3.Lerp(backStartPosition, startPosition , backPercentageComplet);
+            audioSource.volume -= 0.3f * Time.deltaTime;
 
         }
         
